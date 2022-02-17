@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 LABEL maintainer "morikawa"
 
@@ -29,4 +29,9 @@ RUN docker-php-ext-configure gd \
     --with-jpeg=/usr/include/ 
 RUN docker-php-ext-install -j$(nproc) gd bcmath pdo_mysql
 
-RUN apk add --update-cache nodejs npm 
+RUN apk add --update-cache nodejs npm
+
+# デバッグのために追加
+RUN apk add autoconf gcc g++ make
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
