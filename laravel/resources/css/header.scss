@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9000;
+  width: 100%;
+  height: 56px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 5px 10px;
+
+  .logo {
+    height: 100%;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    > li {
+      margin-left: 15px;
+      font-size: 20px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.header-spacer {
+  padding-top: 56px;
+}

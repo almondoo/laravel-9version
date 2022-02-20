@@ -1,6 +1,8 @@
 /*! destyle.css v3.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+
 /* Reset box-model and set borders */
 /* ============================================ */
+
 *,
 ::before,
 ::after {
@@ -11,12 +13,16 @@
 
 /* Document */
 /* ============================================ */
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  * 3. Remove gray overlay on links for iOS.
  */
+
 html {
+  font-size: 16px;
+
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -27,9 +33,11 @@ html {
 
 /* Sections */
 /* ============================================ */
+
 /**
  * Remove the margin in all browsers.
  */
+
 body {
   margin: 0;
 }
@@ -37,12 +45,14 @@ body {
 /**
  * Render the `main` element consistently in IE.
  */
+
 main {
   display: block;
 }
 
 /* Vertical rhythm */
 /* ============================================ */
+
 p,
 table,
 blockquote,
@@ -57,6 +67,7 @@ dl {
 
 /* Headings */
 /* ============================================ */
+
 h1,
 h2,
 h3,
@@ -70,6 +81,7 @@ h6 {
 
 /* Lists (enumeration) */
 /* ============================================ */
+
 ul,
 ol {
   margin: 0;
@@ -79,6 +91,7 @@ ol {
 
 /* Lists (definition) */
 /* ============================================ */
+
 dt {
   font-weight: bold;
 }
@@ -89,10 +102,12 @@ dd {
 
 /* Grouping content */
 /* ============================================ */
+
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+
 hr {
   box-sizing: content-box;
   /* 1 */
@@ -110,6 +125,7 @@ hr {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 pre {
   font-family: monospace, monospace;
   /* 1 */
@@ -123,9 +139,11 @@ address {
 
 /* Text-level semantics */
 /* ============================================ */
+
 /**
  * Remove the gray background on active links in IE 10.
  */
+
 a {
   background-color: transparent;
   text-decoration: none;
@@ -136,6 +154,7 @@ a {
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
+
 abbr[title] {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
@@ -145,6 +164,7 @@ abbr[title] {
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
+
 b,
 strong {
   font-weight: bolder;
@@ -154,6 +174,7 @@ strong {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+
 code,
 kbd,
 samp {
@@ -166,6 +187,7 @@ samp {
 /**
  * Add the correct font size in all browsers.
  */
+
 small {
   font-size: 80%;
 }
@@ -174,6 +196,7 @@ small {
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
+
 sub,
 sup {
   font-size: 75%;
@@ -192,9 +215,11 @@ sup {
 
 /* Replaced content */
 /* ============================================ */
+
 /**
  * Prevent vertical alignment issues.
  */
+
 svg,
 img,
 embed,
@@ -205,11 +230,13 @@ iframe {
 
 /* Forms */
 /* ============================================ */
+
 /**
  * Reset form fields to make them styleable.
  * 1. Make form elements stylable across systems iOS especially.
  * 2. Inherit text-transform from parent.
  */
+
 button,
 input,
 optgroup,
@@ -234,13 +261,14 @@ textarea {
 /**
  * Reset radio and checkbox appearance to preserve their look in iOS.
  */
-[type=checkbox] {
+
+[type='checkbox'] {
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
        appearance: checkbox;
 }
 
-[type=radio] {
+[type='radio'] {
   -webkit-appearance: radio;
   -moz-appearance: radio;
        appearance: radio;
@@ -249,23 +277,25 @@ textarea {
 /**
  * Correct cursors for clickable elements.
  */
+
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   cursor: pointer;
 }
 
 button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
+[type='button']:disabled,
+[type='reset']:disabled,
+[type='submit']:disabled {
   cursor: default;
 }
 
 /**
  * Improve outlines for Firefox and unify style with input elements & buttons.
  */
+
 :-moz-focusring {
   outline: auto;
 }
@@ -277,6 +307,7 @@ select:disabled {
 /**
  * Remove padding
  */
+
 option {
   padding: 0;
 }
@@ -284,6 +315,7 @@ option {
 /**
  * Reset to invisible
  */
+
 fieldset {
   margin: 0;
   padding: 0;
@@ -297,6 +329,7 @@ legend {
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
+
 progress {
   vertical-align: baseline;
 }
@@ -304,6 +337,7 @@ progress {
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
+
 textarea {
   overflow: auto;
 }
@@ -311,15 +345,17 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
 /**
  * 1. Correct the outline style in Safari.
  */
-[type=search] {
+
+[type='search'] {
   outline-offset: -2px;
   /* 1 */
 }
@@ -327,7 +363,8 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type=search]::-webkit-search-decoration {
+
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -335,6 +372,7 @@ textarea {
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Fix font inheritance.
  */
+
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
@@ -345,15 +383,18 @@ textarea {
 /**
  * Clickable labels
  */
+
 label[for] {
   cursor: pointer;
 }
 
 /* Interactive */
 /* ============================================ */
+
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
+
 details {
   display: block;
 }
@@ -361,6 +402,7 @@ details {
 /*
  * Add the correct display in all browsers.
  */
+
 summary {
   display: list-item;
 }
@@ -368,15 +410,18 @@ summary {
 /*
  * Remove outline for editable content.
  */
+
 [contenteditable]:focus {
   outline: auto;
 }
 
 /* Tables */
 /* ============================================ */
+
 /**
 1. Correct table border color inheritance in all Chrome and Safari.
 */
+
 table {
   border-color: inherit;
   /* 1 */
@@ -396,4 +441,240 @@ th {
 th {
   text-align: left;
   font-weight: bold;
+}
+
+.out-inner {
+  max-width: 1024px;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.img {
+  width: auto;
+  height: 100%;
+  vertical-align: bottom;
+}
+
+.card {
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card .card-content {
+  padding: 20px;
+}
+
+.form__list + .form__list {
+  margin-top: 20px;
+}
+
+.field {
+  position: relative;
+}
+.field .field__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  z-index: 2;
+}
+.field .field__input:not(:-moz-placeholder-shown) + .field__label {
+  background: #fff;
+  transform: translate(0, -50%);
+  opacity: 1;
+  z-index: 3;
+}
+.field .field__input:not(:-ms-input-placeholder) + .field__label {
+  background: #fff;
+  transform: translate(0, -50%);
+  opacity: 1;
+  z-index: 3;
+}
+.field .field__input:not(:placeholder-shown) + .field__label {
+  background: #fff;
+  transform: translate(0, -50%);
+  opacity: 1;
+  z-index: 3;
+}
+.field .field__label {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  opacity: 0;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.dropdown {
+  position: relative;
+}
+.dropdown .dropdown__content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 15px;
+  z-index: 9999;
+  max-width: 200px;
+  max-height: 200px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.dropdown:hover .dropdown__content {
+  display: block;
+}
+
+.menu-list li {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #333;
+}
+.menu-list li:hover {
+  background-color: grey;
+}
+.menu-list li:nth-of-type(n + 2) {
+  border-top: none;
+}
+
+.mt-1 {
+  margin-top: 10px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.mt-3 {
+  margin-top: 30px;
+}
+
+.mt-4 {
+  margin-top: 40px;
+}
+
+.mb-1 {
+  margin-top: 10px;
+}
+
+.mb-2 {
+  margin-top: 20px;
+}
+
+.mb-3 {
+  margin-top: 30px;
+}
+
+.mb-4 {
+  margin-top: 40px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.button-group button,
+.button-group input.button {
+  margin-left: 10px;
+}
+.button-group button:first-of-type,
+.button-group input.button:first-of-type {
+  margin-left: 0;
+}
+.button-group.left {
+  justify-content: flex-end;
+}
+
+button,
+input.button {
+  padding: 10px 20px;
+}
+button.contained,
+input.button.contained {
+  border-radius: 10px;
+  background-color: #4285f4;
+  color: #fff;
+}
+button.outlined,
+input.button.outlined {
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.is-primary {
+  background-color: #4285f4 !important;
+}
+
+.is-secondary {
+  background-color: #0f9d58 !important;
+}
+
+.is-danger {
+  color: red;
+}
+
+.error-txt {
+  margin-top: 5px;
+  font-size: 12px;
+  color: red;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9000;
+  width: 100%;
+  height: 56px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 5px 10px;
+}
+.header .logo {
+  height: 100%;
+}
+.header .list {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+.header .list > li {
+  margin-left: 15px;
+  font-size: 20px;
+}
+.header .list > li:first-of-type {
+  margin-left: 0;
+}
+
+.header-spacer {
+  padding-top: 56px;
+}
+
+.register-page .title {
+  margin-bottom: 30px;
+}
+.register-page h1 {
+  text-align: center;
+  font-size: 30px;
+}
+.register-page .card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 400px) {
+  .register-page .card {
+    width: 380px;
+  }
 }
