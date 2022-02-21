@@ -2,19 +2,19 @@
 
 namespace App\UseCases;
 
-class RegisterUserUseCase
+use App\Services\User\UserService;
+use Illuminate\Support\Facades\DB;
+
+class RegisterUserUseCase extends UseCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    protected UserService $user;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(Model $model)
+    public function __construct(UserService $user)
     {
-        $this->model = $model;
+        $this->user = $user;
     }
 
     /**
@@ -22,8 +22,24 @@ class RegisterUserUseCase
      * 
      * @param array $where 条件
      */
-    public function execute()
+    public function execute(array $request): array
     {
-        // このユースケースに必要な処理を書く
+        DB::beginTransaction();
+        try {
+            $user = $this->user->createUser(
+                $request['name'],
+                $request['email'],
+                $request['password']
+            );
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            $this->addErrorMessage('create_user', $e->getMessage());
+            return $this->fail();
+        }
+        if ($this->user->authenticate($user->email, $request['password'], $request['is_remember'])) {
+            return $this->user->fetchLoginUser();
+        }
+        return $this->commit(['user' => $user]);
     }
 }

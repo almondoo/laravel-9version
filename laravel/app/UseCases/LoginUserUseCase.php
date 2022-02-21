@@ -2,28 +2,32 @@
 
 namespace App\UseCases;
 
-class LoginUserUseCase
+use App\Services\User\UserService;
+
+class LoginUserUseCase extends UseCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    protected UserService $user;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(Model $model)
+    public function __construct(UserService $user)
     {
-        $this->model = $model;
+        $this->user = $user;
     }
 
     /**
-     * 処理実行
-     * 
-     * @param array $where 条件
+     * ユースケースに合った処理を行う
+     * 返り値で失敗の場合は全てfalseを返す
      */
-    public function execute()
+    public function execute(array $request): array
     {
-        // このユースケースに必要な処理を書く
+        if ($this->user->authenticate($request['email'], $request['password'], $request['is_remember'])) {
+            return $this->commit([
+                'user' => $this->user->fetchLoginUser()
+            ]);
+        }
+        $this->addErrorMessage('login', 'メールアドレスかパスワードが違います。');
+        return $this->fail();
     }
 }

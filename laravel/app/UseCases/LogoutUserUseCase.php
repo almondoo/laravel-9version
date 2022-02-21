@@ -2,19 +2,18 @@
 
 namespace App\UseCases;
 
-class LogoutUserUseCase
+use App\Services\User\UserService;
+
+class LogoutUserUseCase extends UseCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    protected UserService $userService;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(Model $model)
+    public function __construct(UserService $userService)
     {
-        $this->model = $model;
+        $this->userService = $userService;
     }
 
     /**
@@ -22,8 +21,9 @@ class LogoutUserUseCase
      * 
      * @param array $where 条件
      */
-    public function execute()
+    public function execute(): array
     {
-        // このユースケースに必要な処理を書く
+        $this->userService->logout();
+        return $this->commit();
     }
 }

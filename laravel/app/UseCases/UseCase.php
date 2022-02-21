@@ -8,23 +8,23 @@ class UseCase
      * エラーメッセージの箱
      * @var array
      */
-    protected $error_messages = [];
+    private $error_messages = [];
 
     /**
      * エラーメッセージ追加
      */
     protected function addErrorMessage(string $key, string $message): void
     {
-        $this->$error_messages[$key] =  $message;
+        $this->error_messages[$key] = $message;
     }
 
     /**
      * エラーが起きた
      */
-    protected function error()
+    protected function fail()
     {
         return [
-            'is_error' => true,
+            'is_fail' => true,
             'errors' => $this->error_messages,
         ];
     }
@@ -36,7 +36,7 @@ class UseCase
     {
         return [
             'data' => $data,
-            'is_error' => false,
+            'is_fail' => false,
         ];
     }
 }

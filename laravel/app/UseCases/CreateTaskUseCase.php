@@ -2,19 +2,18 @@
 
 namespace App\UseCases;
 
-class CreateTaskUseCase
+use App\Services\Task\TaskService;
+
+class CreateTaskUseCase extends UseCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    protected TaskService $task;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(Model $model)
+    public function __construct(TaskService $task)
     {
-        $this->model = $model;
+        $this->task = $task;
     }
 
     /**
@@ -22,8 +21,8 @@ class CreateTaskUseCase
      * 
      * @param array $where 条件
      */
-    public function execute()
+    public function execute(): array
     {
-        // このユースケースに必要な処理を書く
+        return $this->commit();
     }
 }
