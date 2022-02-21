@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Infrastructure\Repositories;
+namespace {{ namespace }};
 
 use App\Infrastructure\Interfaces\{{ class }}Interface;
 use App\Models\{{ class }};
 
 class {{ class }}Repository implements {{ class }}Interface
 {
-    
-    /**
-     * @var \App\Models\{{ class }}
-     */
-    private ${{ class }};
+    private {{ class }} ${{ class }};
 
     /**
-     * @param function $function
+     * 初期化
      */
     public function __construct({{ class }} ${{ class }})
     {

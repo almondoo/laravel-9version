@@ -2,12 +2,9 @@
 
 namespace {{ namespace }};
 
-class {{ class }}UseCase
+class {{ class }}UseCase extends UseCase
 {
-    /**
-     * @var Model
-     */
-    protected $model;
+    protected Model $model;
 
     /**
      * 必要なものは先にinjectionする
@@ -19,11 +16,10 @@ class {{ class }}UseCase
 
     /**
      * 処理実行
-     * 
-     * @param array $where 条件
      */
-    public function execute()
+    public function execute(): array
     {
         // このユースケースに必要な処理を書く
+        return $this->commit();
     }
 }
