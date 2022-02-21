@@ -9,52 +9,51 @@
         @csrf
         <div class="form__list">
           <div class="field">
-            <input placeholder="名前" type="text" name="user_name" class="field__input"
-              value="{{ old('user_name') }}" />
+            <input placeholder="名前" type="text" name="name" class="field__input" value="{{ old('name') }}" />
             <label class="field__label">名前</label>
           </div>
-          @error('user_name')
+          @error('name')
             <p class="error-txt">{{ $message }}</p>
           @enderror
         </div>
 
         <div class="form__list">
           <div class="field">
-            <input placeholder="メールアドレス" type="email" name="user_email" class="field__input"
-              value="{{ old('user_email') }}" />
+            <input placeholder="メールアドレス" type="email" name="email" class="field__input"
+              value="{{ old('email') }}" />
             <label class="field__label">メールアドレス</label>
           </div>
-          @error('user_email')
+          @error('email')
             <p class="error-txt">{{ $message }}</p>
           @enderror
         </div>
 
         <div class="form__list">
           <div class="field">
-            <input placeholder="パスワード" type="password" name="user_password" class="field__input" />
+            <input placeholder="パスワード" type="password" name="password" class="field__input" />
             <label class="field__label">パスワード</label>
           </div>
-          @error('user_password')
+          @error('password')
             <p class="error-txt">{{ $message }}</p>
           @enderror
         </div>
 
         <div class="form__list">
           <div class="field">
-            <input placeholder="パスワード再確認" type="password" name="user_password_confirmation" class="field__input" />
+            <input placeholder="パスワード再確認" type="password" name="password_confirmation" class="field__input" />
             <label class="field__label">パスワード確認</label>
           </div>
-          @error('user_password_confirmation')
+          @error('password_confirmation')
             <p class="error-txt">{{ $message }}</p>
           @enderror
         </div>
 
         <div class="form__list">
           <label>
-            <input type="checkbox" name="user_is_remember" {{ old('user_is_remember') ? 'checked' : '' }}>
+            <input type="checkbox" name="is_remember" {{ old('is_remember') ? 'checked' : '' }}>
             ログイン情報を保存する
           </label>
-          @error('user_is_remember')
+          @error('is_remember')
             <p class="error-txt">{{ $message }}</p>
           @enderror
         </div>

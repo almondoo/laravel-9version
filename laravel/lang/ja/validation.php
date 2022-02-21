@@ -12,13 +12,6 @@
 */
 
 return [
-    // attributeを名前に変える
-    'attributes' => [
-        'user_name' => '名前',
-        'user_email' => 'メールアドレス',
-        'user_password' => 'パスワード',
-        'user_password_confirmation' => 'パスワード確認',
-    ],
     'accepted'             => ':attributeを承認してください。',
     'accepted_if'          => 'The :attribute must be accepted when :other is :value.',
     'active_url'           => ':attributeは、有効なURLではありません。',
