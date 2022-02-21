@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-if (!Auth::check()) {
+Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         return view('auth.login');
     })->name('login');
     Route::get('/register', function () {
         return view('auth.register');
     })->name('register');
-}
+});
+
 
 // 認証機能
 Route::controller(AuthController::class)->group(function () {
-    Route::post('/register', 'register')->name('register');
-    Route::post('/login', 'authenticate')->name('login');
-    Route::post('/logout', 'logout')->name('logout');
+    // Route::post('/register', 'register')->name('user.register');
+    Route::post('/login', 'login')->name('user.login');
+    // Route::get('/logout', 'logout')->name('user.logout');
 });
 
 // 認証グループ
