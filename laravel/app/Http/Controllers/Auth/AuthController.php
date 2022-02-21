@@ -3,74 +3,75 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\UseCases\LoginUserUseCase;
+use App\UseCases\LogoutUserUseCase;
+use App\UseCases\RegisterUserUseCase;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
-    /**
-     * @var \App\Models\User
-     */
-    private $user;
+    const REQUEST_VALUE_PREFIX = 'user_';
 
-    public function __construct(User $user)
-    {
-        $this->user = $user;
+    private LoginUserUseCase $loginUserUseCase;
+
+    private LogoutUserUseCase $logoutUserUseCase;
+
+    private RegisterUserUseCase $registerUserUseCase;
+
+    public function __construct(
+        LoginUserUseCase $loginUserUseCase,
+        LogoutUserUseCase $logoutUserUseCase,
+        RegisterUserUseCase $registerUserUseCase,
+    ) {
+        $this->loginUserUseCase = $loginUserUseCase;
+        $this->logoutUserUseCase = $logoutUserUseCase;
+        $this->registerUserUseCase = $registerUserUseCase;
     }
 
     /**
      * ユーザーを作成する
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
      */
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request): RedirectResponse
     {
-        try {
-            $user = $this->user->createUser($request->user_name, $request->user_email, $request->user_password);
-        } catch (\Throwable) {
+        $request_data = $request->all();
+        if (empty($request_data['is_remember'])) {
+            $request_data['is_remember'] = false;
         }
-        Auth::login($user, true);
+        $this->registerUserUseCase->execute($request_data);
+        $request->session()->regenerate();
 
         return to_route('home');
     }
 
     /**
-     * 認証を行う
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * ユーザー認証
      */
-    public function authenticate(Request $request)
+    public function login(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-
-        if (Auth::attempt($credentials, $request->remember)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('home');
+        $request_data = $request->all();
+        if (empty($request_data['is_remember'])) {
+            $request_data['is_remember'] = false;
         }
-        return back()->withErrors([
-            'auth' => 'メールアドレスもしくはパスワードが違います。'
-        ]);
+        $result = $this->loginUserUseCase->execute($request_data);
+        if ($result['is_fail']) {
+            return response()->fail();
+        }
+        $request->session()->regenerate();
+
+        return to_route('home');
     }
 
     /**
      * 認証しているユーザーをログアウトを行う
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function logout(): RedirectResponse
     {
-        Auth::logout();
+        $this->logoutUserUseCase->execute();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+
+        return to_route('/login');
     }
 }

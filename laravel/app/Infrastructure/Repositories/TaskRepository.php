@@ -7,42 +7,35 @@ use App\Models\Task;
 
 class TaskRepository implements TaskInterface
 {
-    
-    /**
-     * @var \App\Models\Task
-     */
-    private $Task;
+    private Task $task;
 
-    /**
-     * @param function $function
-     */
-    public function __construct(Task $Task)
+    public function __construct(Task $task)
     {
-        $this->Task = $Task;
+        $this->task = $task;
     }
 
     public function find(int $id)
     {
-        return $this->Task->find($id);
+        return $this->task->find($id);
     }
 
     public function fetchAll()
     {
-        return $this->Task->get();
+        return $this->task->get();
     }
 
     public function createTask(array $request)
     {
-        return $this->Task->create($request);
+        return $this->task->create($request);
     }
 
-     public function updateTask(array $request)
+    public function updateTask(array $request)
     {
-        return $this->Task->fill($request)->save();
+        return $this->task->fill($request)->save();
     }
 
     public function deleteTask(int $id)
     {
-        return $this->Task->destroy($id);
+        return $this->task->destroy($id);
     }
 }

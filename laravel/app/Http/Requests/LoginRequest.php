@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class LoginRequest extends FormRequest
+class LoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +21,20 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
-        dd('ok');
         return [
-            'user_email' => ['required', 'email', 'exists:users,email', 'string'],
-            'user_password' => ['required', 'min:8', 'string'],
+            'email' => ['required', 'email', 'exists:users,email', 'string'],
+            'password' => ['required', 'min:8', 'string'],
+        ];
+    }
+
+    /**
+     * バリデーションエラーのカスタム属性の取得
+     */
+    public function attributes(): array
+    {
+        return [
+            'email' => 'メールアドレス',
+            'password' => 'パスワード'
         ];
     }
 }

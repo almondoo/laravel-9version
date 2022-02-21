@@ -4,45 +4,44 @@ namespace App\Infrastructure\Repositories;
 
 use App\Infrastructure\Interfaces\UserInterface;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepository implements UserInterface
 {
+    private User $user;
 
-    /**
-     * @var \App\Models\User
-     */
-    private $User;
-
-    /**
-     * @param function $function
-     */
-    public function __construct(User $User)
+    public function __construct(User $user)
     {
-        $this->User = $User;
+        $this->user = $user;
     }
 
-    public function find(int $id)
+    public function find(int $id): User
     {
-        return $this->User->find($id);
+        return $this->user->find($id);
     }
 
-    public function fetchAll()
+    public function fetchAll(): array
     {
-        return $this->User->get();
+        return $this->user->get();
     }
 
-    public function createUser($request)
+    public function createUser(array $request): User
     {
-        return $this->User->create($request);
+        return $this->user->create($request);
     }
 
-    public function updateUser($request)
+    public function updateUser(array $request): bool
     {
-        return $this->User->fill($request)->save();
+        return $this->user->fill($request)->save();
     }
 
-    public function deleteUser(int $id)
+    public function deleteUser(int $id): bool
     {
-        return $this->User->destroy($id);
+        return $this->user->destroy($id);
+    }
+
+    public function fetchLoginUser(): User
+    {
+        return Auth::user();
     }
 }

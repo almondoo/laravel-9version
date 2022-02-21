@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class RegisterRequest extends FormRequest
+class RegisterRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +22,25 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => ['required', 'max:100', 'string'],
-            'user_email' => ['required', 'max: 255', 'string', 'email', 'unique:users,email'],
-            'user_password' => ['required', 'min:8', 'string', 'confirmed'],
-            'user_password_confirmation' => ['required', 'min:8', 'string'],
-            'user_is_remember' => [],
+            'name' => ['required', 'max:100', 'string'],
+            'email' => ['required', 'max: 255', 'string', 'email', 'unique:users,email'],
+            'password' => ['required', 'min:8', 'string', 'confirmed'],
+            'password_confirmation' => ['required', 'min:8', 'string'],
+            'is_remember' => [],
+        ];
+    }
+
+    /**
+     * バリデーションエラーのカスタム属性の取得
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => '名前',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード',
+            'password_confirmation' => 'パスワード確認',
+            'is_remember' => '再ログイン',
         ];
     }
 }
