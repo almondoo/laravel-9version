@@ -628,6 +628,14 @@ input.button.outlined {
   color: red;
 }
 
+.is-full {
+  width: 100%;
+}
+
+.text-align__center {
+  text-align: center;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -675,6 +683,27 @@ input.button.outlined {
 }
 @media screen and (max-width: 400px) {
   .register-page .card {
+    width: 380px;
+  }
+}
+
+.login-page .title {
+  margin-bottom: 30px;
+}
+.login-page h1 {
+  text-align: center;
+  font-size: 30px;
+}
+.login-page .card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 400px) {
+  .login-page .card {
     width: 380px;
   }
 }

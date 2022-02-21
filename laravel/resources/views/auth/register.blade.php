@@ -5,7 +5,7 @@
       <div class="title">
         <h1>アカウント作成</h1>
       </div>
-      <form method="POST" action="{{ route('register') }}">
+      <form method="POST" action="{{ route('user.register') }}">
         @csrf
         <div class="form__list">
           <div class="field">

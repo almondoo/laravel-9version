@@ -31,10 +31,17 @@
         </div>
       </li>
     </ul>
-    <div class="button-group left">
-      <button class="button contained is-secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
-      <button class="button"><a href="{{ route('login') }}">ログイン</a></button>
-    </div>
+    @auth
+      <div class="button-group left">
+        <button class="button"><a href="{{ route('user.logout') }}">ログアウト</a></button>
+      </div>
+    @endauth
+    @guest
+      <div class="button-group left">
+        <button class="button contained is-secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
+        <button class="button"><a href="{{ route('login') }}">ログイン</a></button>
+      </div>
+    @endguest
   </header>
   <div class="header-spacer"></div>
   <div class="out-inner">
