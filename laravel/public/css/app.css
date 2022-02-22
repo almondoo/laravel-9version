@@ -40,6 +40,7 @@ html {
 
 body {
   margin: 0;
+  color: #333;
 }
 
 /**
@@ -455,6 +456,10 @@ th {
   vertical-align: bottom;
 }
 
+.top__content h1 {
+  font-size: 30px;
+}
+
 .card {
   max-width: 100%;
   border-radius: 6px;
@@ -554,19 +559,19 @@ th {
 }
 
 .mb-1 {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .mb-2 {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .mb-3 {
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .mb-4 {
-  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .ml-auto {
@@ -645,6 +650,7 @@ input.button.outlined {
   height: 56px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 5px 10px;
+  background-color: #fff;
 }
 .header .logo {
   height: 100%;
@@ -653,6 +659,11 @@ input.button.outlined {
   display: flex;
   align-items: center;
   margin-left: 30px;
+}
+@media screen and (max-width: 400px) {
+  .header .list {
+    display: none;
+  }
 }
 .header .list > li {
   margin-left: 15px;
@@ -664,6 +675,96 @@ input.button.outlined {
 
 .header-spacer {
   padding-top: 56px;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.modal:not(:target) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+.modal:target {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+.modal .overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+}
+.modal .modal-wrapper {
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+  height: 100%;
+  max-height: 400px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal .modal-contents {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.modal .modal-content {
+  padding: 20px 30px;
+}
+.modal .modal-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  text-decoration: none;
+}
+
+nav.pagination {
+  display: inline-block;
+  margin-top: 10px;
+}
+nav.pagination > .pagination {
+  display: flex;
+  align-items: center;
+  border: 1px solid #888;
+  border-radius: 5px;
+  background-color: #eee;
+}
+nav.pagination .page--item {
+  border-right: 1px solid #888;
+  line-height: 1;
+}
+nav.pagination .page--item.txt--color {
+  color: #4285f4;
+}
+nav.pagination .page--item:last-of-type {
+  border-right: none;
+}
+nav.pagination .page--item.active {
+  background-color: #4285f4;
+  color: #fff;
+  cursor: default;
+}
+nav.pagination .page--item.disabled .page--link {
+  cursor: default;
+}
+nav.pagination .page--item .page--link {
+  display: block;
+  padding: 8px 12px;
 }
 
 .register-page .title {
@@ -706,4 +807,56 @@ input.button.outlined {
   .login-page .card {
     width: 380px;
   }
+}
+
+.home-page .header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.home-page .modal__title {
+  margin-bottom: 30px;
+}
+.home-page .modal__title > h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.task__list--page .task__list--wrap {
+  margin-top: 40px;
+}
+.task__list--page .table__wrap {
+  overflow: scroll;
+}
+.task__list--page table.table {
+  table-layout: auto;
+  width: 100%;
+  border: 1px solid #000;
+}
+.task__list--page table.table th,
+.task__list--page table.table td {
+  padding: 5px;
+  border: 1px solid #000;
+  vertical-align: middle;
+}
+.task__list--page table.table th.user--name,
+.task__list--page table.table td.user--name {
+  min-width: 100px;
+}
+.task__list--page table.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 244px;
+}
+.task__list--page table.table tr {
+  height: 40px;
+}
+.task__list--page table.table tr:hover {
+  background-color: #ccc;
+}
+.task__list--page table.table a {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  color: blue;
 }

@@ -7,6 +7,7 @@
   height: 56px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 5px 10px;
+  background-color: #fff;
 
   .logo {
     height: 100%;
@@ -16,6 +17,10 @@
     display: flex;
     align-items: center;
     margin-left: 30px;
+
+    @include max_mq(sm) {
+      display: none;
+    }
 
     > li {
       margin-left: 15px;

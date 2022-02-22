@@ -1,14 +1,29 @@
-$breakpoints: (
+$mq-breakpoints: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+$max_mq-breakpoints: (
   'sm': 'screen and (max-width: 400px)',
   'md': 'screen and (max-width: 768px)',
   'lg': 'screen and (max-width: 1000px)',
   'xl': 'screen and (max-width: 1200px)',
 ) !default;
-@mixin max_mq($breakpoint) {
-  @media #{map-get($breakpoints , $breakpoint)} {
+
+@mixin mq($breakpoint) {
+  @media #{map-get($mq-breakpoints, $breakpoint)} {
     @content;
   }
 }
+
+@mixin max_mq($breakpoint) {
+  @media #{map-get($max_mq-breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
 $primary-color: #4285f4;
 $secondary-color: #0f9d58;
 $yello: #f4b400;
@@ -16,6 +31,11 @@ $red: #db4437;
 
 @import 'reset.css';
 @import 'base.scss';
-@import 'header.scss';
-@import 'auth/register.scss';
-@import 'auth/login.scss';
+@import 'components/header.scss';
+@import 'components/modal.scss';
+@import 'components/pagination.scss';
+@import 'guest/register.scss';
+@import 'guest/login.scss';
+@import 'auth/home.scss';
+@import 'task/list.scss';
+@import 'task/detail.scss';

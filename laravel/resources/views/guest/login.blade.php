@@ -13,7 +13,7 @@
             <label class="field__label">メールアドレス</label>
           </div>
           @error('email')
-            <p class="error-txt">{{ $message }}</p>
+            <x-error-text message="{{ $message }}" />
           @enderror
         </div>
 
@@ -23,10 +23,10 @@
             <label class="field__label">パスワード</label>
           </div>
           @error('password')
-            <p class="error-txt">{{ $message }}</p>
+            <x-error-text message="{{ $message }}" />
           @enderror
           @error('login')
-            <p class="error-txt">{{ $message }}</p>
+            <x-error-text message="{{ $message }}" />
           @enderror
         </div>
 
@@ -36,7 +36,7 @@
             ログイン情報を保存する
           </label>
           @error('is_remember')
-            <p class="error-txt">{{ $message }}</p>
+            <x-error-text message="{{ $message }}" />
           @enderror
         </div>
 
