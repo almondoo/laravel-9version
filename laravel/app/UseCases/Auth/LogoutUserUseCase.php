@@ -1,19 +1,20 @@
 <?php
 
-namespace App\UseCases;
+namespace App\UseCases\Auth;
 
-use App\Services\User\UserService;
+use App\UseCases\UseCase;
+use App\Services\Auth\AuthService;
 
 class LogoutUserUseCase extends UseCase
 {
-    protected UserService $userService;
+    protected AuthService $authService;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(UserService $userService)
+    public function __construct(AuthService $authService)
     {
-        $this->userService = $userService;
+        $this->authService = $authService;
     }
 
     /**
@@ -23,7 +24,7 @@ class LogoutUserUseCase extends UseCase
      */
     public function execute(): array
     {
-        $this->userService->logout();
+        $this->authService->logout();
         return $this->commit();
     }
 }

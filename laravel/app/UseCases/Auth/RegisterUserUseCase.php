@@ -1,20 +1,26 @@
 <?php
 
-namespace App\UseCases;
+namespace App\UseCases\Auth;
 
+use App\UseCases\UseCase;
+use App\Services\Auth\AuthService;
 use App\Services\User\UserService;
 use Illuminate\Support\Facades\DB;
 
 class RegisterUserUseCase extends UseCase
 {
-    protected UserService $user;
+    protected AuthService $authService;
+    protected UserService $userService;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(UserService $user)
-    {
-        $this->user = $user;
+    public function __construct(
+        AuthService $authService,
+        UserService $userService
+    ) {
+        $this->userService = $userService;
+        $this->authService = $authService;
     }
 
     /**
@@ -26,7 +32,7 @@ class RegisterUserUseCase extends UseCase
     {
         DB::beginTransaction();
         try {
-            $user = $this->user->createUser(
+            $user = $this->userService->createUser(
                 $request['name'],
                 $request['email'],
                 $request['password']
@@ -37,8 +43,8 @@ class RegisterUserUseCase extends UseCase
             $this->addErrorMessage('create_user', $e->getMessage());
             return $this->fail();
         }
-        if ($this->user->authenticate($user->email, $request['password'], $request['is_remember'])) {
-            return $this->user->fetchLoginUser();
+        if ($this->authService->authenticate($user->email, $request['password'], $request['is_remember'])) {
+            return $this->userService->fetchLoginUser();
         }
         return $this->commit(['user' => $user]);
     }

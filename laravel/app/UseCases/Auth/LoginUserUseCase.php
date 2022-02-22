@@ -1,19 +1,25 @@
 <?php
 
-namespace App\UseCases;
+namespace App\UseCases\Auth;
 
+use App\UseCases\UseCase;
+use App\Services\Auth\AuthService;
 use App\Services\User\UserService;
 
 class LoginUserUseCase extends UseCase
 {
-    protected UserService $user;
+    protected AuthService $authService;
+    protected UserService $userService;
 
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(UserService $user)
-    {
-        $this->user = $user;
+    public function __construct(
+        AuthService $authService,
+        UserService $userService
+    ) {
+        $this->authService = $authService;
+        $this->userService = $userService;
     }
 
     /**
@@ -22,9 +28,9 @@ class LoginUserUseCase extends UseCase
      */
     public function execute(array $request): array
     {
-        if ($this->user->authenticate($request['email'], $request['password'], $request['is_remember'])) {
+        if ($this->authService->authenticate($request['email'], $request['password'], $request['is_remember'])) {
             return $this->commit([
-                'user' => $this->user->fetchLoginUser()
+                'user' => $this->userService->fetchLoginUser()
             ]);
         }
         $this->addErrorMessage('login', 'メールアドレスかパスワードが違います。');

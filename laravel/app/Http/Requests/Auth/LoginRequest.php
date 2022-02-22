@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
+
+use App\Http\Requests\Request;
 
 class LoginRequest extends Request
 {
@@ -22,7 +24,7 @@ class LoginRequest extends Request
     public function rules()
     {
         return [
-            'email' => ['required', 'email', 'exists:users,email', 'string'],
+            'email' => ['required', 'email', 'string'],
             'password' => ['required', 'min:8', 'string'],
         ];
     }
