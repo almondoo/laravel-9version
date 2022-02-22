@@ -15,16 +15,14 @@ class ResponseMacroServiceProvider extends ServiceProvider
     public function boot()
     {
         Response::macro('success', function (string $view, array $data = []) {
-            return view($view)->with($data);
+            return view($view, $data);
         });
 
         /**
-         * $data = ↓
-         * errors
-         *  key: [value]
+         * 直前のURLにリダイレクトしてエラーを送る
          */
-        Response::macro('fail', function (array $data = []) {
-            return redirect()->with($data);
+        Response::macro('fail', function (array $messages = []) {
+            return back()->withErrors($messages);
         });
     }
 }
