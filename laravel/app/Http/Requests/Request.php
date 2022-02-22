@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
+// use Illuminate\Contracts\Validation\Validator;
+// use Illuminate\Validation\ValidationException;
 
 class Request extends FormRequest
 {
@@ -13,11 +13,10 @@ class Request extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function failedValidation(Validator $validator): void
-    {
-        dd($this->errorBag);
-        throw (new ValidationException($validator))
-            ->errorBag($this->errorBag)
-            ->redirectTo($this->getRedirectUrl());
-    }
+    // protected function failedValidation(Validator $validator): void
+    // {
+    //     throw (new ValidationException($validator))
+    //         ->errorBag($this->errorBag)
+    //         ->redirectTo($this->getRedirectUrl());
+    // }
 }

@@ -14,27 +14,33 @@ class TaskRepository implements TaskInterface
         $this->task = $task;
     }
 
-    public function find(int $id)
+    public function find(int $id): object
     {
         return $this->task->find($id);
     }
 
-    public function fetchAll()
+    public function paginate(int $count)
+    {
+        return $this->task->paginate($count);
+    }
+
+    public function fetchAll(): object
     {
         return $this->task->get();
     }
 
-    public function createTask(array $request)
+    public function createTask(array $request): object
     {
         return $this->task->create($request);
     }
 
-    public function updateTask(array $request)
+    public function updateTask(int $id, array $request): int
     {
-        return $this->task->fill($request)->save();
+        $task = $this->find($id);
+        return $task->fill($request)->save();
     }
 
-    public function deleteTask(int $id)
+    public function deleteTask(int $id): int
     {
         return $this->task->destroy($id);
     }

@@ -15,7 +15,7 @@ class UserRepository implements UserInterface
         $this->user = $user;
     }
 
-    public function find(int $id): User
+    public function find(int $id): object
     {
         return $this->user->find($id);
     }
@@ -25,14 +25,15 @@ class UserRepository implements UserInterface
         return $this->user->get();
     }
 
-    public function createUser(array $request): User
+    public function createUser(array $request): object
     {
         return $this->user->create($request);
     }
 
-    public function updateUser(array $request): bool
+    public function updateUser(int $id, array $request): bool
     {
-        return $this->user->fill($request)->save();
+        $user = $this->find($id);
+        return $user->fill($request)->save();
     }
 
     public function deleteUser(int $id): bool
@@ -40,7 +41,7 @@ class UserRepository implements UserInterface
         return $this->user->destroy($id);
     }
 
-    public function fetchLoginUser(): User
+    public function fetchLoginUser(): object
     {
         return Auth::user();
     }

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\UseCases\LoginUserUseCase;
-use App\UseCases\LogoutUserUseCase;
-use App\UseCases\RegisterUserUseCase;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\UseCases\Auth\LoginUserUseCase;
+use App\UseCases\Auth\LogoutUserUseCase;
+use App\UseCases\Auth\RegisterUserUseCase;
 use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
@@ -39,7 +39,10 @@ class AuthController extends Controller
         if (empty($request_data['is_remember'])) {
             $request_data['is_remember'] = false;
         }
-        $this->registerUserUseCase->execute($request_data);
+        $result = $this->registerUserUseCase->execute($request_data);
+        if ($result['is_fail']) {
+            return response()->fail($result['messages']);
+        }
         $request->session()->regenerate();
 
         return to_route('home');
@@ -56,7 +59,7 @@ class AuthController extends Controller
         }
         $result = $this->loginUserUseCase->execute($request_data);
         if ($result['is_fail']) {
-            return response()->fail();
+            return response()->fail($result['messages']);
         }
         $request->session()->regenerate();
 
@@ -69,9 +72,9 @@ class AuthController extends Controller
     public function logout(): RedirectResponse
     {
         $this->logoutUserUseCase->execute();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
 
-        return to_route('/login');
+        return to_route('login');
     }
 }
