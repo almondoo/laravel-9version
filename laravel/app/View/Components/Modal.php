@@ -4,21 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Header extends Component
+class Modal extends Component
 {
-    /**
-     * タイトル
-     */
-    public string $title;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title)
+    public function __construct()
     {
-        $this->title = $title;
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class Header extends Component
      */
     public function render()
     {
-        return view('components.header');
+        return view('components.modal');
     }
 }

@@ -4,21 +4,20 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Header extends Component
+class ErrorText extends Component
 {
     /**
-     * タイトル
+     * エラーメッセージ
      */
-    public string $title;
-
+    public string $message;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title)
+    public function __construct(string $message)
     {
-        $this->title = $title;
+        $this->message = $message;
     }
 
     /**
@@ -28,6 +27,6 @@ class Header extends Component
      */
     public function render()
     {
-        return view('components.header');
+        return view('components.error-text');
     }
 }
