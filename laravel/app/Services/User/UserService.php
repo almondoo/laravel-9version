@@ -4,7 +4,6 @@ namespace App\Services\User;
 
 use App\Infrastructure\Interfaces\UserInterface;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -15,25 +14,6 @@ class UserService
     public function __construct(UserInterface $userRepo)
     {
         $this->userRepo = $userRepo;
-    }
-
-    /**
-     * 認証を行う
-     */
-    public function authenticate(string $email, string $password, $remember_me): bool
-    {
-        if (Auth::attempt(['name' => $email, 'password' => $password], $remember_me)) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * ログアウト
-     */
-    public function logout(): void
-    {
-        Auth::logout();
     }
 
     /**
