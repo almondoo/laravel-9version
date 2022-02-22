@@ -2,11 +2,18 @@
 
 namespace App\Services\Auth;
 
+use App\Infrastructure\Interfaces\UserInterface;
 use Illuminate\Support\Facades\Auth;
-
 
 class AuthService
 {
+    private UserInterface $userRepo;
+
+    public function __construct(UserInterface $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
+
     /**
      * 認証を行う
      */
@@ -24,5 +31,13 @@ class AuthService
     public function logout(): void
     {
         Auth::logout();
+    }
+
+    /**
+     * ログインユーザー取得
+     */
+    public function fetchLoginUser(): object
+    {
+        return $this->userRepo->fetchLoginUser();
     }
 }

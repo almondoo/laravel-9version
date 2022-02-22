@@ -38,7 +38,7 @@
     @endauth
     @guest
       <div class="button-group left">
-        <button class="button contained is-secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
+        <button class="button contained bgc--secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
         <button class="button"><a href="{{ route('login') }}">ログイン</a></button>
       </div>
     @endguest

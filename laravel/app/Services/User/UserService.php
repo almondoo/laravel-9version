@@ -17,14 +17,6 @@ class UserService
     }
 
     /**
-     * ログインユーザー取得
-     */
-    public function fetchLoginUser(): User
-    {
-        return $this->userRepo->fetchLoginUser();
-    }
-
-    /**
      * ユーザー作成
      */
     public function createUser(string $name, string $email, string $password): User

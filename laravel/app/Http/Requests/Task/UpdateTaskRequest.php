@@ -24,8 +24,7 @@ class UpdateTaskRequest extends Request
     public function rules()
     {
         return [
-            'task_id' => ['required', 'integer', 'exists:tasks,id'],
-            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'id' => ['required', 'integer', 'exists:tasks,id'],
             'title' => ['required', 'string', 'max:200'],
             'text' => ['required', 'string', 'max:20000'],
         ];

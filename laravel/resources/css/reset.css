@@ -337,6 +337,7 @@ progress {
 
 textarea {
   overflow: auto;
+  line-height: 1.3;
 }
 
 /**

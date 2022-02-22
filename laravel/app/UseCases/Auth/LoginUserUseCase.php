@@ -30,7 +30,7 @@ class LoginUserUseCase extends UseCase
     {
         if ($this->authService->authenticate($request['email'], $request['password'], $request['is_remember'])) {
             return $this->commit([
-                'user' => $this->userService->fetchLoginUser()
+                'user' => $this->authService->fetchLoginUser()
             ]);
         }
         $this->addErrorMessage('login', 'メールアドレスかパスワードが違います。');

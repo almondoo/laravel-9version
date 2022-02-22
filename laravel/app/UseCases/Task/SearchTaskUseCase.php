@@ -2,10 +2,10 @@
 
 namespace App\UseCases\Task;
 
-use App\UseCases\UseCase;
 use App\Services\Task\TaskService;
+use App\UseCases\UseCase;
 
-class FetchTaskUseCase extends UseCase
+class SearchTaskUseCase extends UseCase
 {
     protected TaskService $taskService;
 
@@ -22,12 +22,7 @@ class FetchTaskUseCase extends UseCase
      */
     public function execute(array $request): array
     {
-        $data = [];
-        if (!empty($request['id'])) {
-            $data['task'] = $this->taskService->findTask($request['id']);
-        } else {
-            $data['tasks'] = $this->taskService->paginate();
-        }
-        return $this->commit($data);
+        $tasks = $this->taskService->searchPaginate($request['keyword']);
+        return $this->commit(['tasks' => $tasks]);
     }
 }

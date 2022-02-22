@@ -24,7 +24,6 @@ class CreateTaskRequest extends Request
     public function rules()
     {
         return [
-            'user_id' => ['required', 'integer', 'exists:users,id'],
             'title' => ['required', 'string', 'max:200'],
             'text' => ['required', 'string', 'max:20000'],
         ];
@@ -36,7 +35,6 @@ class CreateTaskRequest extends Request
     public function attributes(): array
     {
         return [
-            'user_id' => 'ユーザーID',
             'title' => 'タイトル',
             'text' => '内容',
         ];

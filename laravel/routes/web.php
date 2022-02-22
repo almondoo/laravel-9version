@@ -40,10 +40,18 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(TaskController::class)->group(function () {
         Route::get('/task', 'listTask')->name('task.list');
-        Route::get('/task/detail/{id?}', 'detailTask')->name('task.detail');
+        Route::get('/task/detail/{task?}', 'detailTask')
+            ->where('task', '[0-9]+')
+            ->name('task.detail');
 
         Route::post('/task/create', 'createTask')->name('task.create');
-        Route::put('/task/update', 'updateTask')->name('task.update');
-        Route::delete('/task/delete', 'deleteTask')->name('task.delete');
+        Route::put('/task/update/{task}', 'updateTask')
+            ->can('update', 'task')
+            ->where('task', '[0-9]+')
+            ->name('task.update');
+        Route::delete('/task/delete/{task}', 'deleteTask')
+            ->can('delete', 'task')
+            ->where('task', '[0-9]+')
+            ->name('task.delete');
     });
 });

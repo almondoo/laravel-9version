@@ -6,8 +6,8 @@
   <form method="GET" action="{{ route('task.list') }}">
     <div class="form__list mb-1">
       <div class="field">
-        <input placeholder="検索" type="text" name="search" class="field__input" value="{{ old('title') }}" />
-        <label class="field__label">検索</label>
+        <input placeholder="タイトル検索" type="text" name="search" class="field__input" value="{{ old('title') }}" />
+        <label class="field__label">タイトル検索</label>
       </div>
       @error('title')
         <x-error-text message="{{ $message }}" />
@@ -18,6 +18,7 @@
       <input class="button contained" type="submit" value="検索" />
     </div>
   </form>
+
   @isset($tasks)
     <div class="table__wrap">
       <table class="table mt-3">
@@ -33,7 +34,7 @@
           @foreach ($tasks as $task)
             <tr>
               <td class="text--middle">
-                <a href="{{ route('task.detail', ['id' => $task->id]) }}">{{ $task->id }}</a>
+                <a href="{{ route('task.detail', ['task' => $task->id]) }}">{{ $task->id }}</a>
               </td>
               <td>{{ $task->title }}</td>
               <td>{{ $task->text }}</td>

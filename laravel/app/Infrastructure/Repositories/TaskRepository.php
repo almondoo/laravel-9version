@@ -14,14 +14,19 @@ class TaskRepository implements TaskInterface
         $this->task = $task;
     }
 
-    public function find(int $id): object
+    public function find(int $id): ?Task
     {
         return $this->task->find($id);
     }
 
-    public function paginate(int $count)
+    public function paginate(): ?object
     {
-        return $this->task->paginate($count);
+        return $this->task->paginate(env('TASK_LIST_COUNT'));
+    }
+
+    public function conditionPaginate(array $condition = []): ?object
+    {
+        return $this->task->where($condition)->paginate(env('TASK_LIST_COUNT'));
     }
 
     public function fetchAll(): object
@@ -29,7 +34,7 @@ class TaskRepository implements TaskInterface
         return $this->task->get();
     }
 
-    public function createTask(array $request): object
+    public function createTask(array $request): Task
     {
         return $this->task->create($request);
     }

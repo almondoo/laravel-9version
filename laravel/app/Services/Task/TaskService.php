@@ -3,6 +3,7 @@
 namespace App\Services\Task;
 
 use App\Infrastructure\Interfaces\TaskInterface;
+use App\Models\Task;
 
 class TaskService
 {
@@ -17,19 +18,27 @@ class TaskService
         $this->taskRepo = $taskRepo;
     }
 
-    public function fetchTask(): object
+    /**
+     * @return object
+     */
+    public function fetchTask()
     {
         return $this->taskRepo->fetchAll();
     }
 
-    public function findTask(int $id = null): object
+    public function findTask(int $id = null): ?Task
     {
         return $this->taskRepo->find($id);
     }
 
-    public function paginate(int $count): object
+    public function paginate(): ?object
     {
-        return $this->taskRepo->paginate($count);
+        return $this->taskRepo->paginate();
+    }
+
+    public function searchPaginate(string $keyword): ?object
+    {
+        return $this->taskRepo->conditionPaginate([['title', 'like', "%$keyword%"]]);
     }
 
     public function createTask(array $data): Task

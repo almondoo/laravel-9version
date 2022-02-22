@@ -3,18 +3,22 @@
 namespace App\UseCases\Task;
 
 use App\UseCases\UseCase;
+use App\Services\Auth\AuthService;
 use App\Services\Task\TaskService;
 use Illuminate\Support\Facades\DB;
 
 class UpdateTaskUseCase extends UseCase
 {
+    protected AuthService $authService;
     protected TaskService $taskService;
-
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(TaskService $taskService)
-    {
+    public function __construct(
+        AuthService $authService,
+        TaskService $taskService
+    ) {
+        $this->authService = $authService;
         $this->taskService = $taskService;
     }
 
@@ -25,8 +29,7 @@ class UpdateTaskUseCase extends UseCase
     {
         DB::beginTransaction();
         try {
-            $this->taskService->updateTask($request['task_id'], [
-                'user_id' => $request['user_id'],
+            $this->taskService->updateTask($request['id'], [
                 'title' => $request['title'],
                 'text' =>  $request['text'],
             ]);
