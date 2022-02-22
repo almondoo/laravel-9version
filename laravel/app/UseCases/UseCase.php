@@ -15,7 +15,7 @@ class UseCase
      */
     protected function addErrorMessage(string $key, string $message): void
     {
-        $this->error_messages[$key] = $message;
+        $this->error_messages[$key][] = $message;
     }
 
     /**
@@ -25,7 +25,7 @@ class UseCase
     {
         return [
             'is_fail' => true,
-            'errors' => $this->error_messages,
+            'messages' => $this->error_messages,
         ];
     }
 
