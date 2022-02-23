@@ -51,8 +51,7 @@
       "@php artisan key:generate --ansi"
     ],
     "compile": [
-      "@php -r \"file_exists('.env') || copy('.env.production', '.env');\"",
-      "@npm install"
+      "@php -r \"file_exists('.env') || copy('.env.production', '.env');\""
     ]
   },
   "extra": {
