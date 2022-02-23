@@ -1,6 +1,9 @@
 # laravel-9version
 
-## heroku コマンド
+## 環境設定
 
-1. cd /laravel-9version
-2. git subtree push --prefix laravel heroku master
+1. make build
+2. make app (app コンテナに入る)
+3. composer install
+4. npm i
+5. php artisan key:generate
