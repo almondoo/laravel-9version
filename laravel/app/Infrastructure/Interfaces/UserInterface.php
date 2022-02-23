@@ -6,10 +6,10 @@ use App\Models\User;
 
 interface UserInterface
 {
-    public function find(int $id): object;
+    public function find(int $id): ?User;
     public function fetchAll(): array;
-    public function createUser(array $request): object;
-    public function updateUser(int $id, array $request): bool;
-    public function deleteUser(int $id): bool;
-    public function fetchLoginUser(): object;
+    public function createUser(array $request): User;
+    public function updateUser(int $id, array $request): int;
+    public function deleteUser(int $id): int;
+    public function fetchLoginUser(): ?User;
 }

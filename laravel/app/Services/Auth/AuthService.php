@@ -3,6 +3,7 @@
 namespace App\Services\Auth;
 
 use App\Infrastructure\Interfaces\UserInterface;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AuthService
@@ -36,7 +37,7 @@ class AuthService
     /**
      * ログインユーザー取得
      */
-    public function fetchLoginUser(): object
+    public function fetchLoginUser(): ?User
     {
         return $this->userRepo->fetchLoginUser();
     }
