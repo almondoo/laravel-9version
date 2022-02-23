@@ -10,6 +10,6 @@
 
 ## heroku ログイン情報 作りたくない人向け
 
-url: https://laravel-9version.herokuapp.com/login
-email: example@gmail.com
-password: aaaaaaaa
+url: https://laravel-9version.herokuapp.com/login  
+email: example@gmail.com  
+password: aaaaaaaa  
