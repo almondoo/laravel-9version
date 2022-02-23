@@ -1,8 +1,8 @@
 $mq-breakpoints: (
-  'sm': 'screen and (min-width: 400px)',
-  'md': 'screen and (min-width: 768px)',
-  'lg': 'screen and (min-width: 1000px)',
-  'xl': 'screen and (min-width: 1200px)',
+  'sm': 'screen and (min-width: 401px)',
+  'md': 'screen and (min-width: 769px)',
+  'lg': 'screen and (min-width: 1001px)',
+  'xl': 'screen and (min-width: 1201px)',
 ) !default;
 
 $max_mq-breakpoints: (
@@ -36,6 +36,6 @@ $red: #db4437;
 @import 'components/pagination.scss';
 @import 'guest/register.scss';
 @import 'guest/login.scss';
-@import 'auth/home.scss';
+@import 'home/home.scss';
 @import 'task/list.scss';
 @import 'task/detail.scss';

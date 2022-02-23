@@ -135,10 +135,9 @@
   align-items: center;
   width: 100%;
 
-  button,
-  input.button {
+  .button {
     margin-left: 10px;
-    &:first-of-type {
+    &:first-child {
       margin-left: 0;
     }
   }
@@ -148,7 +147,6 @@
   }
 }
 
-button,
 .button {
   padding: 10px 20px;
 
@@ -200,4 +198,17 @@ button,
 
 .text-align__center {
   text-align: center;
+}
+
+.is--sp {
+  @include max_mq(sm) {
+    display: block !important;
+  }
+  @include mq(sm) {
+    display: none !important;
+  }
+}
+
+.is--white--space {
+  white-space: nowrap !important;
 }

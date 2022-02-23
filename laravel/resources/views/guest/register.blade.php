@@ -60,7 +60,7 @@
 
 
         <div class="button-group mt-2 left">
-          <button>戻る</button>
+          <button class="button">戻る</button>
           <input class="button contained" type="submit" value="作成" />
         </div>
       </form>

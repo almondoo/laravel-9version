@@ -50,7 +50,7 @@ $has_task = !empty($task);
 @endif
 <div class="button-group mt-2 left">
   <label class="button contained bgc--danger" for="delete">削除</label>
-  <button><a href="{{ route('task.list') }}">戻る</a></button>
+  <button class="button"><a href="{{ route('task.list') }}">戻る</a></button>
   <label class="button contained" for="submit">{{ $has_task ? '編集' : '作成' }}</label>
 </div>
 <x-footer />

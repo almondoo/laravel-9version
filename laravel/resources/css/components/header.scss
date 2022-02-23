@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     margin-left: 30px;
+    height: 100%;
 
     @include max_mq(sm) {
       display: none;
@@ -25,10 +26,17 @@
     > li {
       margin-left: 15px;
       font-size: 20px;
+      font-weight: bold;
       &:first-of-type {
         margin-left: 0;
       }
     }
+  }
+
+  .dropdown__wrap {
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 
