@@ -38,7 +38,7 @@ class TaskService
 
     public function searchPaginate(string $keyword): ?object
     {
-        return $this->taskRepo->conditionPaginate([['title', 'like', "%$keyword%"]]);
+        return $this->taskRepo->conditionPaginate([['title', 'like', "%{$keyword}%"]]);
     }
 
     public function createTask(array $data): Task

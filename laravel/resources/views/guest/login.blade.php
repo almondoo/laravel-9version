@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-content">
       <div class="title">
-        <h1>アカウント作成</h1>
+        <h1>ログイン</h1>
       </div>
       <form method="POST" action="{{ route('user.login') }}">
         @csrf
@@ -42,6 +42,9 @@
 
         <input class="button contained is-full text-align__center mt-2" type="submit" value="ログイン" />
       </form>
+      <div class="button-group mt-2 right">
+        <a href="{{ route('register') }}"><button class="button">アカウント作成</button></a>
+      </div>
     </div>
   </div>
 </div>

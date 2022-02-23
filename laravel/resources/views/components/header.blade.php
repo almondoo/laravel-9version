@@ -40,12 +40,15 @@
     <div class="is--sp dropdown__wrap is-full">
       <div class="dropdown">
         <button>リンク</button>
-
         <div class="dropdown__content">
           <ul class="menu-list">
-            <li><a href="/home">Home</a></li>
-            <li><a href="https://github.com/tsubasa111/laravel-9version" target="_blank"
-                rel="nooperner noreferrer">Github</a></li>
+            <li>
+              <a href="/home">Home</a>
+            </li>
+            <li>
+              <a href="https://github.com/tsubasa111/laravel-9version" target="_blank"
+                rel="nooperner noreferrer">Github</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -55,12 +58,6 @@
         <button class="button is--white--space"><a href="{{ route('user.logout') }}">ログアウト</a></button>
       </div>
     @endauth
-    @guest
-      <div class="button-group right">
-        <button class="button contained bgc--secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
-        <button class="button"><a href="{{ route('login') }}">ログイン</a></button>
-      </div>
-    @endguest
   </header>
   <div class="header-spacer"></div>
   <div class="out-inner">

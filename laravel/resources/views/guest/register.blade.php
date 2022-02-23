@@ -58,12 +58,11 @@
           @enderror
         </div>
 
-
-        <div class="button-group mt-2 right">
-          <button class="button">戻る</button>
-          <input class="button contained" type="submit" value="作成" />
-        </div>
+        <input class="button contained is-full text-align__center mt-2" type="submit" value="作成" />
       </form>
+      <div class="button-group mt-2 right">
+        <a href="{{ route('login') }}"><button class="button">アカウントをお持ちの方</button></a>
+      </div>
     </div>
   </div>
 </div>

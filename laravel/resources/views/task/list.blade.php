@@ -6,10 +6,10 @@
   <form method="GET" action="{{ route('task.list') }}">
     <div class="form__list mb-1">
       <div class="field">
-        <input placeholder="タイトル検索" type="text" name="search" class="field__input" value="{{ old('title') }}" />
+        <input placeholder="タイトル検索" type="text" name="keyword" class="field__input" value="{{ $keyword ?? '' }}" />
         <label class="field__label">タイトル検索</label>
       </div>
-      @error('title')
+      @error('keyword')
         <x-error-text message="{{ $message }}" />
       @enderror
     </div>
@@ -23,28 +23,30 @@
     <a href="{{ route('task.detail') }}"><button class="button contained bgc--secondary">タスク追加</button></a>
   </div>
   @isset($tasks)
-    <table class="table mt-1">
-      <thead>
-        <tr>
-          <th class="text--middle">ID</th>
-          <th class="text--middle">タイトル</th>
-          <th class="text--middle">テキスト</th>
-          <th class="text--middle user--name">作成者</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($tasks as $task)
+    <div class="table__wrap">
+      <table class="table mt-1">
+        <thead>
           <tr>
-            <td class="text--middle">
-              <a href="{{ route('task.detail', ['task' => $task->id]) }}">{{ $task->id }}</a>
-            </td>
-            <td>{{ $task->title }}</td>
-            <td>{{ $task->text }}</td>
-            <td class="text--middle">{{ $task->user->name }}</td>
+            <th class="text--middle">ID</th>
+            <th class="text--middle">タイトル</th>
+            <th class="text--middle">テキスト</th>
+            <th class="text--middle user--name">作成者</th>
           </tr>
-        @endforeach
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @foreach ($tasks as $task)
+            <tr>
+              <td class="text--middle">
+                <a href="{{ route('task.detail', ['task' => $task->id]) }}">{{ $task->id }}</a>
+              </td>
+              <td>{{ $task->title }}</td>
+              <td>{{ $task->text }}</td>
+              <td class="text--middle">{{ $task->user->name }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
     {{ $tasks->links('components.pagination') }}
   @endisset
 </div>
