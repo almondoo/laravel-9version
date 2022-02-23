@@ -41,7 +41,7 @@ class UserRepository implements UserInterface
         return $this->user->destroy($id);
     }
 
-    public function fetchLoginUser(): User
+    public function fetchLoginUser(): ?User
     {
         return Auth::user();
     }

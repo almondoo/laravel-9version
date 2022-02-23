@@ -135,14 +135,14 @@
   align-items: center;
   width: 100%;
 
-  .button {
+  > * {
     margin-left: 10px;
     &:first-child {
       margin-left: 0;
     }
   }
 
-  &.left {
+  &.right {
     justify-content: flex-end;
   }
 }

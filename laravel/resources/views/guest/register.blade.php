@@ -59,7 +59,7 @@
         </div>
 
 
-        <div class="button-group mt-2 left">
+        <div class="button-group mt-2 right">
           <button class="button">戻る</button>
           <input class="button contained" type="submit" value="作成" />
         </div>

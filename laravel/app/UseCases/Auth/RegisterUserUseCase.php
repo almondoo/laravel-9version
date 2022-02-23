@@ -44,7 +44,7 @@ class RegisterUserUseCase extends UseCase
             return $this->fail();
         }
         if ($this->authService->authenticate($user->email, $request['password'], $request['is_remember'])) {
-            return $this->authService->fetchLoginUser();
+            $user = $this->authService->fetchLoginUser();
         }
         return $this->commit(['user' => $user]);
     }

@@ -51,12 +51,12 @@
       </div>
     </div>
     @auth
-      <div class="button-group left">
+      <div class="button-group right">
         <button class="button is--white--space"><a href="{{ route('user.logout') }}">ログアウト</a></button>
       </div>
     @endauth
     @guest
-      <div class="button-group left">
+      <div class="button-group right">
         <button class="button contained bgc--secondary"><a href="{{ route('register') }}">アカウント作成</a></button>
         <button class="button"><a href="{{ route('login') }}">ログイン</a></button>
       </div>

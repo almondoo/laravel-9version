@@ -14,36 +14,37 @@
       @enderror
     </div>
 
-    <div class="button-group left">
+    <div class="button-group right">
       <input class="button contained" type="submit" value="検索" />
     </div>
   </form>
 
+  <div class="button-group mt-3 right">
+    <a href="{{ route('task.detail') }}"><button class="button contained bgc--secondary">タスク追加</button></a>
+  </div>
   @isset($tasks)
-    <div class="table__wrap">
-      <table class="table mt-3">
-        <thead>
+    <table class="table mt-1">
+      <thead>
+        <tr>
+          <th class="text--middle">ID</th>
+          <th class="text--middle">タイトル</th>
+          <th class="text--middle">テキスト</th>
+          <th class="text--middle user--name">作成者</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($tasks as $task)
           <tr>
-            <th class="text--middle">ID</th>
-            <th class="text--middle">タイトル</th>
-            <th class="text--middle">テキスト</th>
-            <th class="text--middle user--name">作成者</th>
+            <td class="text--middle">
+              <a href="{{ route('task.detail', ['task' => $task->id]) }}">{{ $task->id }}</a>
+            </td>
+            <td>{{ $task->title }}</td>
+            <td>{{ $task->text }}</td>
+            <td class="text--middle">{{ $task->user->name }}</td>
           </tr>
-        </thead>
-        <tbody>
-          @foreach ($tasks as $task)
-            <tr>
-              <td class="text--middle">
-                <a href="{{ route('task.detail', ['task' => $task->id]) }}">{{ $task->id }}</a>
-              </td>
-              <td>{{ $task->title }}</td>
-              <td>{{ $task->text }}</td>
-              <td class="text--middle">{{ $task->user->name }}</td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
+        @endforeach
+      </tbody>
+    </table>
     {{ $tasks->links('components.pagination') }}
   @endisset
 </div>

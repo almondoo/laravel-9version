@@ -48,9 +48,9 @@ $has_task = !empty($task);
     <input id="delete" type="submit" class="is--hidden" />
   </form>
 @endif
-<div class="button-group mt-2 left">
+<div class="button-group mt-2 right">
   <label class="button contained bgc--danger" for="delete">削除</label>
-  <button class="button"><a href="{{ route('task.list') }}">戻る</a></button>
+  <a href="{{ route('task.list') }}"><button class="button">戻る</button></a>
   <label class="button contained" for="submit">{{ $has_task ? '編集' : '作成' }}</label>
 </div>
 <x-footer />
