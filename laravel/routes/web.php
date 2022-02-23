@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return to_route('login');
+    });
     Route::get('/login', function () {
         return view('guest.login');
     })->name('login');
