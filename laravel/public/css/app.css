@@ -615,7 +615,7 @@ th {
   color: #4285f4 !important;
 }
 
-.IS--secondary {
+.is--secondary {
   color: #0f9d58 !important;
 }
 
@@ -628,13 +628,13 @@ th {
 }
 
 .bgc--danger {
-  background-color: red !important;
+  background-color: #d9534f !important;
 }
 
 .error-txt {
   margin-top: 5px;
   font-size: 12px;
-  color: red;
+  color: #d9534f;
 }
 
 .is--hidden {
@@ -795,6 +795,22 @@ nav.pagination .page--item.disabled .page--link {
 nav.pagination .page--item .page--link {
   display: block;
   padding: 8px 12px;
+}
+
+.alert--component {
+  margin: 30px 0;
+  padding: 15px 20px;
+  color: #fff;
+  border-radius: 6px;
+}
+.alert--component.success {
+  background-color: #5cb85c;
+}
+.alert--component.warning {
+  background-color: #f0ad4e;
+}
+.alert--component.danger {
+  background-color: #f0ad4e;
 }
 
 .register-page .title {

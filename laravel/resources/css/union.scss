@@ -26,14 +26,17 @@ $max_mq-breakpoints: (
 
 $primary-color: #4285f4;
 $secondary-color: #0f9d58;
-$yello: #f4b400;
-$red: #db4437;
+$success-color: #5cb85c;
+$info-color: #5bc0de;
+$warning-color: #f0ad4e;
+$danger-color: #d9534f;
 
 @import 'reset.css';
 @import 'base.scss';
 @import 'components/header.scss';
 @import 'components/modal.scss';
 @import 'components/pagination.scss';
+@import 'components/alert.scss';
 @import 'guest/register.scss';
 @import 'guest/login.scss';
 @import 'home/home.scss';

@@ -166,7 +166,7 @@
   color: $primary-color !important;
 }
 
-.IS--secondary {
+.is--secondary {
   color: $secondary-color !important;
 }
 
@@ -179,13 +179,13 @@
 }
 
 .bgc--danger {
-  background-color: red !important;
+  background-color: $danger-color !important;
 }
 
 .error-txt {
   margin-top: 5px;
   font-size: 12px;
-  color: red;
+  color: $danger-color;
 }
 
 .is--hidden {

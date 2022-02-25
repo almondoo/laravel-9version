@@ -38,7 +38,7 @@ class TaskController extends Controller
 
     public function listTask(Request $request): View
     {
-        $keyword = $request->input('search');
+        $keyword = $request->input('keyword');
         if ($keyword) {
             $result = $this->searchTaskUseCase->execute(['keyword' => $keyword]);
         } else {
@@ -50,7 +50,7 @@ class TaskController extends Controller
         return response()->success('task.list', $result['data']);
     }
 
-    public function detailTask(Task $task): View
+    public function detailTask(Request $request, Task $task): View
     {
         $result['data'] = [];
         if ($this->existsModel($task)) {
@@ -59,6 +59,9 @@ class TaskController extends Controller
             if ($result['is_fail']) {
                 return response()->fail($result['messages']);
             }
+        }
+        if ($request->input('status')) {
+            $result['data']['status'] = $request->input('status');
         }
         return response()->success('task.detail', $result['data']);
     }
@@ -69,7 +72,10 @@ class TaskController extends Controller
         if ($result['is_fail']) {
             return response()->fail($result['messages']);
         }
-        return to_route('task.detail', ['task' => $result['data']['task']->id]);
+        return to_route('task.detail', [
+            'task' => $result['data']['task']->id,
+            'status' => 'new',
+        ]);
     }
 
     /**

@@ -23,6 +23,9 @@ class SearchTaskUseCase extends UseCase
     public function execute(array $request): array
     {
         $tasks = $this->taskService->searchPaginate($request['keyword']);
-        return $this->commit(['tasks' => $tasks]);
+        return $this->commit([
+            'tasks' => $tasks,
+            'keyword' => $request['keyword'],
+        ]);
     }
 }

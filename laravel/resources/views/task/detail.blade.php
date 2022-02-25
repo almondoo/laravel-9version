@@ -3,8 +3,14 @@
 $has_task = !empty($task);
 @endphp
 <div class="top__content mb-3">
-  <h1>タスク作成</h1>
+  <h1>{{ $has_task ? 'タスク修正' : 'タスク作成' }}</h1>
 </div>
+
+@isset($is_new)
+  <x-alert type="success">
+    タスクを作成しました。
+  </x-alert>
+@endisset
 <form method="POST" action="{{ $has_task ? route('task.update', ['task' => $task->id]) : route('task.create') }}">
   @csrf
   @if ($has_task)
