@@ -47,6 +47,11 @@
         </tbody>
       </table>
     </div>
+    @php
+      if (!empty($keyword)) {
+          $tasks->appends(['keyword' => $keyword]);
+      }
+    @endphp
     {{ $tasks->links('components.pagination') }}
   @endisset
 </div>
