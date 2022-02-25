@@ -14,6 +14,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected const CREATE_STATUS = 'create';
+    protected const UPDATE_STATUS = 'update';
+    protected const DELETE_STATUS = 'delete';
+
     protected function existsModel($model): bool
     {
         $exists = false;

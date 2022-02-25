@@ -6,9 +6,17 @@ $has_task = !empty($task);
   <h1>{{ $has_task ? 'タスク修正' : 'タスク作成' }}</h1>
 </div>
 
-@isset($is_new)
+@isset($status)
   <x-alert type="success">
-    タスクを作成しました。
+    @switch($status)
+      @case('create')
+        タスク作成しました。
+      @break
+
+      @case('update')
+        タスクを更新しました。
+      @break
+    @endswitch
   </x-alert>
 @endisset
 <form method="POST" action="{{ $has_task ? route('task.update', ['task' => $task->id]) : route('task.create') }}">

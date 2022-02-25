@@ -3,6 +3,11 @@
   <div class="top__content mb-3">
     <h1>タスク一覧</h1>
   </div>
+  @isset($status)
+    <x-alert type="success">
+      タスクを削除しました。
+    </x-alert>
+  @endisset
   <form method="GET" action="{{ route('task.list') }}">
     <div class="form__list mb-1">
       <div class="field">

@@ -47,12 +47,14 @@ class TaskController extends Controller
         if ($result['is_fail']) {
             return response()->fail($result['messages']);
         }
+        if ($request->session()->has('status')) {
+            $result['data']['status'] = $request->session()->get('status');
+        }
         return response()->success('task.list', $result['data']);
     }
 
     public function detailTask(Request $request, Task $task): View
     {
-        $result['data'] = [];
         if ($this->existsModel($task)) {
             $result = $this->fetchTaskUseCase->execute(['id' => $task->id]);
 
@@ -60,8 +62,8 @@ class TaskController extends Controller
                 return response()->fail($result['messages']);
             }
         }
-        if ($request->input('status')) {
-            $result['data']['status'] = $request->input('status');
+        if ($request->session()->has('status')) {
+            $result['data']['status'] = $request->session()->get('status');
         }
         return response()->success('task.detail', $result['data']);
     }
@@ -72,9 +74,9 @@ class TaskController extends Controller
         if ($result['is_fail']) {
             return response()->fail($result['messages']);
         }
+        $request->session()->flash('status', self::CREATE_STATUS);
         return to_route('task.detail', [
             'task' => $result['data']['task']->id,
-            'status' => 'new',
         ]);
     }
 
@@ -87,15 +89,19 @@ class TaskController extends Controller
         if ($result['is_fail']) {
             return response()->fail($result['messages']);
         }
-        return to_route('task.detail', ['task' => $request->input('id')]);
+        $request->session()->flash('status', self::UPDATE_STATUS);
+        return to_route('task.detail', [
+            'task' => $request->input('id'),
+        ]);
     }
 
-    public function deleteTask(Task $task): RedirectResponse
+    public function deleteTask(Request $request, Task $task): RedirectResponse
     {
         $result = $this->deleteTaskUseCase->execute(['id' => $task->id]);
         if ($result['is_fail']) {
             return response()->fail($result['messages']);
         }
+        $request->session()->flash('status', self::DELETE_STATUS);
         return to_route('task.list');
     }
 }
