@@ -23,8 +23,6 @@ $has_task = !empty($task);
   @csrf
   @if ($has_task)
     @method('PUT')
-  @endif
-  @if ($has_task)
     <input type="hidden" name="id" value="{{ $task->id }}" />
   @endif
 
@@ -41,8 +39,7 @@ $has_task = !empty($task);
 
   <div class="form__list">
     <div class="field">
-      <textarea placeholder="内容" type="textarea" name="text" class="field__input"
-        rows="8">{{ $task->text ?? old('text') }}</textarea>
+      <textarea placeholder="内容" type="textarea" name="text" class="field__input" rows="8">{{ $task->text ?? old('text') }}</textarea>
       <label class="field__label">内容</label>
     </div>
     @error('text')
@@ -63,7 +60,9 @@ $has_task = !empty($task);
   </form>
 @endif
 <div class="button-group mt-2 right">
-  <label class="button contained bgc--danger" for="delete">削除</label>
+  @if ($has_task)
+    <label class="button contained bgc--danger" for="delete">削除</label>
+  @endif
   <a href="{{ route('task.list') }}"><button class="button">戻る</button></a>
   <label class="button contained" for="submit">{{ $has_task ? '編集' : '作成' }}</label>
 </div>

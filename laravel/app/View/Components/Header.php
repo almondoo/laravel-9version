@@ -7,18 +7,10 @@ use Illuminate\View\Component;
 class Header extends Component
 {
     /**
-     * タイトル
+     * @param string $title タイトル
      */
-    public string $title;
-
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct(string $title)
+    public function __construct(public string $title)
     {
-        $this->title = $title;
     }
 
     /**

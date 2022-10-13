@@ -7,11 +7,8 @@ use App\Models\Task;
 
 class TaskRepository implements TaskInterface
 {
-    private Task $task;
-
-    public function __construct(Task $task)
+    public function __construct(private Task $task)
     {
-        $this->task = $task;
     }
 
     public function find(int $id): ?Task

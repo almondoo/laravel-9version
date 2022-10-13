@@ -7,14 +7,11 @@ use App\UseCases\UseCase;
 
 class SearchTaskUseCase extends UseCase
 {
-    protected TaskService $taskService;
-
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(TaskService $taskService)
+    public function __construct(protected TaskService $taskService)
     {
-        $this->taskService = $taskService;
     }
 
     /**

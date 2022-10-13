@@ -7,17 +7,10 @@ use Illuminate\View\Component;
 class ErrorText extends Component
 {
     /**
-     * エラーメッセージ
+     * @param string $message エラーメッセージ
      */
-    public string $message;
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct(string $message)
+    public function __construct(public string $message)
     {
-        $this->message = $message;
     }
 
     /**

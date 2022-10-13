@@ -7,14 +7,11 @@ use App\Services\Auth\AuthService;
 
 class LogoutUserUseCase extends UseCase
 {
-    protected AuthService $authService;
-
     /**
      * 必要なものは先にinjectionする
      */
-    public function __construct(AuthService $authService)
+    public function __construct(protected AuthService $authService)
     {
-        $this->authService = $authService;
     }
 
     /**

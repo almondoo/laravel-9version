@@ -9,18 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class RegisterUserUseCase extends UseCase
 {
-    protected AuthService $authService;
-    protected UserService $userService;
-
     /**
      * 必要なものは先にinjectionする
      */
     public function __construct(
-        AuthService $authService,
-        UserService $userService
+        protected AuthService $authService,
+        protected UserService $userService
     ) {
-        $this->userService = $userService;
-        $this->authService = $authService;
     }
 
     /**

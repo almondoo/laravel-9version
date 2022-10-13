@@ -5,17 +5,16 @@ namespace App\Services\Task;
 use App\Infrastructure\Interfaces\TaskInterface;
 use App\Models\Task;
 
+/**
+ * TODO: 貧血になってる
+ */
 class TaskService
 {
-
-    private TaskInterface $taskRepo;
-
     /**
      * 初期化
      */
-    public function __construct(TaskInterface $taskRepo)
+    public function __construct(private TaskInterface $taskRepo)
     {
-        $this->taskRepo = $taskRepo;
     }
 
     /**

@@ -14,20 +14,12 @@ class AuthController extends Controller
 {
     const REQUEST_VALUE_PREFIX = 'user_';
 
-    private LoginUserUseCase $loginUserUseCase;
-
-    private LogoutUserUseCase $logoutUserUseCase;
-
-    private RegisterUserUseCase $registerUserUseCase;
 
     public function __construct(
-        LoginUserUseCase $loginUserUseCase,
-        LogoutUserUseCase $logoutUserUseCase,
-        RegisterUserUseCase $registerUserUseCase,
+        private LoginUserUseCase $loginUserUseCase,
+        private LogoutUserUseCase $logoutUserUseCase,
+        private RegisterUserUseCase $registerUserUseCase,
     ) {
-        $this->loginUserUseCase = $loginUserUseCase;
-        $this->logoutUserUseCase = $logoutUserUseCase;
-        $this->registerUserUseCase = $registerUserUseCase;
     }
 
     /**

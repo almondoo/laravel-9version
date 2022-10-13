@@ -8,11 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthService
 {
-    private UserInterface $userRepo;
-
-    public function __construct(UserInterface $userRepo)
+    public function __construct(private UserInterface $userRepo)
     {
-        $this->userRepo = $userRepo;
     }
 
     /**

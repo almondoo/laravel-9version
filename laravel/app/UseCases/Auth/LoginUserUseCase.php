@@ -8,18 +8,13 @@ use App\Services\User\UserService;
 
 class LoginUserUseCase extends UseCase
 {
-    protected AuthService $authService;
-    protected UserService $userService;
-
     /**
      * 必要なものは先にinjectionする
      */
     public function __construct(
-        AuthService $authService,
-        UserService $userService
+        protected AuthService $authService,
+        protected UserService $userService,
     ) {
-        $this->authService = $authService;
-        $this->userService = $userService;
     }
 
     /**

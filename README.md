@@ -11,7 +11,7 @@ Application層 (UIからリクエストを捌く。ユースケースなどを�
 ↓
 Domain層 (ビジネスロジックを記載)
 ↓
-INfrastructure層 (DB及びメモリ操作。DB以外のロジック禁止。)
+Infrastructure層 (DB及びメモリ操作。DB以外のロジック禁止。)
 
 よく使う場所
 

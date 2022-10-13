@@ -9,18 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CreateTaskUseCase extends UseCase
 {
-    private TaskService $taskService;
-    private AuthService $authService;
-
     /**
      * 必要なものは先にinjectionする
      */
     public function __construct(
-        AuthService $authService,
-        TaskService $taskService,
+        private AuthService $authService,
+        private TaskService $taskService,
     ) {
-        $this->authService = $authService;
-        $this->taskService = $taskService;
     }
 
     /**
