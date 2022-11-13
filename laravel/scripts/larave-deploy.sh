@@ -11,3 +11,9 @@ php artisan route:cache
 
 echo "Running migrations..."
 php artisan migrate
+
+echo "npm install..."
+npm install
+
+echo "npm build..."
+npm build
