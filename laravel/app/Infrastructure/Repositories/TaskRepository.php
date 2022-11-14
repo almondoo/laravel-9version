@@ -18,17 +18,17 @@ class TaskRepository implements TaskInterface
 
     public function paginate(): ?object
     {
-        return $this->task->with('user')->paginate(env('TASK_LIST_COUNT'));
+        return $this->task->with('user')->sortLatest()->paginate(env('TASK_LIST_COUNT'));
     }
 
     public function conditionPaginate(array $condition = []): ?object
     {
-        return $this->task->where($condition)->with('user')->paginate(env('TASK_LIST_COUNT'));
+        return $this->task->where($condition)->with('user')->sortLatest()->paginate(env('TASK_LIST_COUNT'));
     }
 
     public function fetchAll(): object
     {
-        return $this->task->get();
+        return $this->task->sortLatest()->get();
     }
 
     public function createTask(array $request): Task
